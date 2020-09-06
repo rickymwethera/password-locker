@@ -6,6 +6,7 @@ class User:
         self.username = username
         self.password = password
         self.platform = platform
+        
 
 
     def save_user(self):
