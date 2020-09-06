@@ -40,12 +40,27 @@ def main():
         if new_password == "mine":
             print("okay, type in your password")
             password = input()
+            if password == 'mine':
+                print('\n')
+                print('Kindly enter your prefered password: (Your password is safe with us)')
+                password = input()
+                print('\n')
+                print('Password stored successfully')
+                print("Account setup complete")
 
-        elif new_password =="g":
+            elif passcode == 'g':
+                    print('\n')
+                    password = random.randint(34567,98756)
+                    print('\n')
+                    print("Password generation is SUCCESSFUL!")
+                    print("Account setup complete")
             
 
-        save_user(create_user(username,password))
-        print()
+        # else new_password =="g":
+
+
+    # save_user(create_user(username,password))
+    #     print()
 
     elif short_code == "lg": 
         print("Enter your credentials to login")
