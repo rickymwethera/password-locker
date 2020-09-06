@@ -18,8 +18,15 @@ def display_credentials():
     
     return Credentials.display_credentials()
 
+
+
+
 def main():
-    print("its working")
+    print("Welcome to Password Locker")
+    print('\n')
+    print("Select a short code to navigate through:To create a new user use 'nu' To login to your account 'lg' or 'ex' to exit")
+    short_code = input().lower()
+    print('\n')
 
 if __name__ == '__main__':
                 """main function to run the module"""
