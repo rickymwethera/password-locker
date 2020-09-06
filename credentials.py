@@ -1,12 +1,32 @@
 from user import User
 
 class Credentials:
-    new_user_list = User.user_list
+    new_user_list = []
 
-    def __init__(self, platform, username, password):
-        self.platform = platform
+    def __init__(self, username, password):
+        
         self.username = username 
         self.password = password
 
-    def save_user(self):
-        User.user_list.append(self)
+    def save_credential(self):
+        Credentials.new_user_list.append(self)
+    
+        """function to display all available accounts"""
+    
+    def display_credentials():
+        """
+        method that returns the credential array
+        """
+        return Credentials.new_user_list
+
+    def del_account(credential):
+        Credentials.new_user_list.remove(credential)
+        return credential
+    
+    def find_account(username):
+        for credential in Credentials.new_user_list:
+            if credential.username == username:
+                
+                return credential
+
+    
