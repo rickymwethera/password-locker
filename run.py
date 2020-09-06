@@ -31,13 +31,21 @@ def main():
     if short_code == "nu":
         print("Create a new account!")
         print("Create username")
-        new_user = input()
+        username = input()
 
         print("Create Password")
+        print("If you desire to type in your own password user the short code 'mine' and code 'g' for use to generate one for you")
         new_password = input()
 
-        print("Confirm Password")
-        confirm_pass = input()
+        if new_password == "mine":
+            print("okay, type in your password")
+            password = input()
+
+        elif new_password =="g":
+            
+
+        save_user(create_user(username,password))
+        print()
 
     elif short_code == "lg": 
         print("Enter your credentials to login")
@@ -51,6 +59,9 @@ def main():
     elif short_code == "ex":
         print("Thank you for using password locker login again soon, Goodbye!")
         print("\n")
+
+    else:
+        print("Please use the short codes!")
         
 
         
