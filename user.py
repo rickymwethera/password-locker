@@ -2,10 +2,10 @@ class User:
     """new users creation"""
     user_list = []
 
-    def __init__(self,username, password, platform):
+    def __init__(self,username, password):
         self.username = username
         self.password = password
-        self.platform = platform
+        
         
 
 
