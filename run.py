@@ -28,6 +28,33 @@ def main():
     short_code = input().lower()
     print('\n')
 
+    if short_code == "nu":
+        print("Create a new account!")
+        print("Create username")
+        new_user = input()
+
+        print("Create Password")
+        new_password = input()
+
+        print("Confirm Password")
+        confirm_pass = input()
+
+    elif short_code == "lg": 
+        print("Enter your credentials to login")
+        print("Enter your username")
+        username = input()
+
+        print("Enter your password")
+        password = input()
+
+
+    elif short_code == "ex":
+        print("Thank you for using password locker login again soon, Goodbye!")
+        print("\n")
+        
+
+        
+
 if __name__ == '__main__':
                 """main function to run the module"""
 main()
