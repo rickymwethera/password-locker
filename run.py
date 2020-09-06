@@ -2,8 +2,8 @@ import random
 from user import User
 from credentials import Credentials
 
-def create_user(platform, username, password):
-    new_user = User(platform, username, password)
+def create_user(username, password):
+    new_user = User(username, password)
     return new_user
 
 
@@ -37,30 +37,27 @@ def main():
         print("If you desire to type in your own password user the short code 'mine' and code 'g' for use to generate one for you")
         new_password = input()
 
-        if new_password == "mine":
-            print("okay, type in your password")
+        if new_password == 'mine':
+            print('\n')
+            print('Kindly enter your prefered password: (Your password is safe with us)')
             password = input()
-            if password == 'mine':
-                print('\n')
-                print('Kindly enter your prefered password: (Your password is safe with us)')
-                password = input()
-                print('\n')
-                print('Password stored successfully')
-                print("Account setup complete")
+            print('\n')
+            print('Password stored successfully')
+            print("Account setup complete")
 
-            elif passcode == 'g':
-                    print('\n')
-                    password = random.randint(34567,98756)
-                    print('\n')
-                    print("Password generation is SUCCESSFUL!")
-                    print("Account setup complete")
+        elif new_password == 'g':
+            print('\n')
+            password = random.randint(10000,98765)
+            print('\n')
+            print(f"{password}")
+            print("Password generation is SUCCESSFUL!")
+            print("Account setup complete")
+
+        save_user(create_user(username,password))
+        print("details have been saved!")
             
 
-        # else new_password =="g":
-
-
-    # save_user(create_user(username,password))
-    #     print()
+       
 
     elif short_code == "lg": 
         print("Enter your credentials to login")
@@ -69,6 +66,22 @@ def main():
 
         print("Enter your password")
         password = input()
+
+
+    #  elif short_code == 'view':
+
+    #     if display_credentials():
+    #             print("Here is a list of all your Accounts")
+    #             print('\n')
+
+    #             for user in display_credentials():
+    #                     print(f"{user.username} {user.password}")
+
+    #             print('\n')
+    #     else:
+    #             print('\n')
+    #             print("You don't seem to have any accounts saved yet")
+    #             print('\n')
 
 
     elif short_code == "ex":
