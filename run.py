@@ -10,6 +10,16 @@ def create_user(username, password):
 def save_user(user):
     user.save_user()
 
+def user_verification(username,password):
+    '''
+	Function that verifies the existance of the user before allowing login
+	'''
+    ifexists=''
+    for user in User.user_list:
+        if (user.username == username and user.password == password):
+                    ifexists = user.username
+        return ifexists
+
 def del_user(ind):
     Credentials.delete_user(ind)
 
@@ -22,74 +32,112 @@ def display_credentials():
 
 
 def main():
-    print("Welcome to Password Locker")
-    print('\n')
-    print("Select a short code to navigate through:To create a new user use 'nu' To login to your account 'lg' or 'ex' to exit")
-    short_code = input().lower()
-    print('\n')
+    # while True:
+        print("Welcome to Password Locker")
+        print('\n')
+        print("Select a code to navigate through:To create a new user use 'nu' To login to your account 'lg' or 'ex' to exit")
+        nav_code = input().lower()
+        print('\n')
 
-    if short_code == "nu":
-        print("Create a new account!")
-        print("Create username")
-        username = input()
+        if nav_code == "nu":
+            print("Create a new account!")
+            print("Create username")
+            username = input()
 
-        print("Create Password")
-        print("If you desire to type in your own password user the short code 'mine' and code 'g' for use to generate one for you")
-        new_password = input()
+            print("Create Password")
+            print("If you desire to type in your own password user the short code 'mine' and code 'g' for use to generate one for you")
+            new_password = input()
 
-        if new_password == 'mine':
-            print('\n')
-            print('Kindly enter your prefered password: (Your password is safe with us)')
-            password = input()
-            print('\n')
-            print('Password stored successfully')
-            print("Account setup complete")
+            if new_password == 'mine':
+                print('\n')
+                print('Kindly enter your prefered password: (Your password is safe with us)')
+                password = input()
+                print('\n')
+                print('Password stored successfully')
+                print("Account setup complete")
 
-        elif new_password == 'g':
-            print('\n')
-            password = random.randint(10000,98765)
-            print('\n')
-            print(f"{password}")
-            print("Password generation is SUCCESSFUL!")
-            print("Account setup complete")
+            elif new_password == 'g':
+                print('\n')
+                password = random.randint(10000,98765)
+                print('\n')
+                print(f"{password}")
+                print("Password generation is SUCCESSFUL!")
+                print("Account setup complete")
 
-        save_user(create_user(username,password))
-        print("details have been saved!")
-            
+            save_user(create_user(username,password))
+            print("details have been saved!")
+                
 
        
 
-    elif short_code == "lg": 
-        print("Enter your credentials to login")
-        print("Enter your username")
-        username = input()
+        elif nav_code == "lg": 
+            print("Enter your credentials to login")
+            print("Enter your username")
+            username = input()
 
-        print("Enter your password")
-        password = input()
+            print("Enter your password")
+            password = input()
+
+            # status= user_verification(username,password)
+            # if status == username:
+
+            while True:
+
+                print(f"Hello {username} Welcome, you are now logged in")
+
+                print("Here is a list of commands and their functions. 'add' - adds account 'disp' -displays account details' 'del-deletes account' 'out - logout' ")
+                nav_code = input().lower()
+
+                if nav_code == 'disp':
+                    if display_credentials():
+                        print("This is a list of all your stored usernames and passwords")
+
+                        for credentials in display_credentials():
+                            print(f"USERNAME: {credentials.username} \nPASSWORD: {credentials.password}")
+
+                    else:
+                        print("You do not have any saved details")
+
+                elif nav_code == 'add':
+                    print("Great, add a new account below")
+                    print("Enter your username")
+                    username = input()
+                    print("Create Password")
+                    print("If you desire to type in your own password user the short code 'mine' and code 'g' for use to generate one for you")
+                    new_password = input()
+
+                    if new_password == 'mine':
+                        print('\n')
+                        print('Kindly enter your prefered password: (Your password is safe with us)')
+                        password = input()
+                        print('\n')
+                        print('Password stored successfully')
+                        print("Account setup complete")
+
+                    elif new_password == 'g':
+                        print('\n')
+                        password = random.randint(10000,98765)
+                        print('\n')
+                        print(f"{password}")
+                        print("Password generation is SUCCESSFUL!")
+                        print("Account setup complete")
+
+                    # save_credential
+                elif nav_code == "out":
+                    print("Thank you for using password locker login again soon, Goodbye!")
+                    print("\n")
+                else:
+                    print("Please use the codes available")
 
 
-    #  elif short_code == 'view':
-
-    #     if display_credentials():
-    #             print("Here is a list of all your Accounts")
-    #             print('\n')
-
-    #             for user in display_credentials():
-    #                     print(f"{user.username} {user.password}")
-
-    #             print('\n')
-    #     else:
-    #             print('\n')
-    #             print("You don't seem to have any accounts saved yet")
-    #             print('\n')
 
 
-    elif short_code == "ex":
-        print("Thank you for using password locker login again soon, Goodbye!")
-        print("\n")
+        elif nav_code == "ex":
+            print("Thank you for using password locker login again soon, Goodbye!")
+            print("\n")
 
-    else:
-        print("Please use the short codes!")
+        else:
+            print("Please use the short codes!")
         
 
         
