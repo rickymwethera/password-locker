@@ -3,6 +3,7 @@ from user import User
 from credentials import Credentials
 
 def create_user(username, password):
+    '''creates a new user and gets the blueprint from user class'''
     new_user = User(username, password)
     return new_user
 
@@ -39,7 +40,7 @@ def save_creds(credentials):
 
 
 
-
+#main function execution
 def main():
     while True:
         print("Welcome to Password Locker")
@@ -102,7 +103,8 @@ def main():
                             print("This is a list of all your stored usernames and passwords")
 
                             for credentials in display_credentials():
-                                print(f"USERNAME: {credentials.username} \nPASSWORD: {credentials.password}")
+                                print(f"USERNAME: {credentials.username} \nPASSWORD: {credentials.password}\n")
+                                print("*"*50)
 
                         else:
                             print("You do not have any saved details")
@@ -130,12 +132,12 @@ def main():
                             print(f"{password}")
                             print("Password generation is SUCCESSFUL!")
                             print("Account setup complete")
-                        
+                        #now lets save the credentials created so that they can be viewed on disp
                         save_creds(new_creds(username,password))
                         print("new credentials have been saved")
 
-                        # save_credential
-                    elif nav_code == "out":
+                        
+                    elif nav_code == "out":#logout from user account to home 
                         print("Thank you for using password locker login again soon, Goodbye!")
                         print("\n")
                     else:
@@ -148,12 +150,12 @@ def main():
 
 
 
-        elif nav_code == "ex":
+        elif nav_code == "ex":#exiting the program
             print("Thank you for using password locker login again soon, Goodbye!")
             print("\n")
 
         else:
-            print("Please use the short codes!")
+            print("Please use the codes!")
         
 
         
