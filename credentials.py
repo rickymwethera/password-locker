@@ -8,7 +8,7 @@ class Credentials:
         self.username = username 
         self.password = password
 
-    def save_credential(self):
+    def save_creds(self):
         Credentials.new_user_list.append(self)
     
         """function to display all available accounts"""
