@@ -28,11 +28,20 @@ def display_credentials():
     
     return Credentials.display_credentials()
 
+def new_creds(username,password):
+    '''function creates new credentials'''
+    created_creds = Credentials(username,password)
+    return created_creds
+
+def save_creds(credentials):
+    '''this function saves the new credentials'''
+    Credentials.save_creds(credentials)
+
 
 
 
 def main():
-    # while True:
+    while True:
         print("Welcome to Password Locker")
         print('\n')
         print("Select a code to navigate through:To create a new user use 'nu' To login to your account 'lg' or 'ex' to exit")
@@ -40,7 +49,7 @@ def main():
         print('\n')
 
         if nav_code == "nu":
-            print("Create a new account!")
+            print("Create a new account!")# creating a new user account
             print("Create username")
             username = input()
 
@@ -58,9 +67,9 @@ def main():
 
             elif new_password == 'g':
                 print('\n')
-                password = random.randint(10000,98765)
+                password = random.randint(10000,98765)#randomly searches for a password from between the figures given
                 print('\n')
-                print(f"{password}")
+                print(f"Your new password is {password}")
                 print("Password generation is SUCCESSFUL!")
                 print("Account setup complete")
 
@@ -78,56 +87,63 @@ def main():
             print("Enter your password")
             password = input()
 
-            # status= user_verification(username,password)
-            # if status == username:
+            status= user_verification(username,password)
+            if status == username:
 
-            while True:
+                while True:
 
-                print(f"Hello {username} Welcome, you are now logged in")
+                    print(f"Hello {username} Welcome, you are now logged in")
 
-                print("Here is a list of commands and their functions. 'add' - adds account 'disp' -displays account details' 'del-deletes account' 'out - logout' ")
-                nav_code = input().lower()
+                    print("Here is a list of commands and their functions. 'add' - adds account 'disp' -displays account details' 'del-deletes account' 'out - logout' ")
+                    nav_code = input().lower()
 
-                if nav_code == 'disp':
-                    if display_credentials():
-                        print("This is a list of all your stored usernames and passwords")
+                    if nav_code == 'disp':
+                        if display_credentials():
+                            print("This is a list of all your stored usernames and passwords")
 
-                        for credentials in display_credentials():
-                            print(f"USERNAME: {credentials.username} \nPASSWORD: {credentials.password}")
+                            for credentials in display_credentials():
+                                print(f"USERNAME: {credentials.username} \nPASSWORD: {credentials.password}")
 
+                        else:
+                            print("You do not have any saved details")
+
+                    elif nav_code == 'add':
+                        print("Great, add a new account below")
+                        print("Enter your username")
+                        username = input()
+                        print("Create Password")
+                        print("If you desire to type in your own password user the short code 'mine' and code 'g' for use to generate one for you")
+                        new_password = input()
+
+                        if new_password == 'mine':
+                            print('\n')
+                            print('Kindly enter your prefered password: (Your password is safe with us)')
+                            password = input()
+                            print('\n')
+                            print('Password stored successfully')
+                            print("Account setup complete")
+
+                        elif new_password == 'g':
+                            print('\n')
+                            password = random.randint(10000,98765)
+                            print('\n')
+                            print(f"{password}")
+                            print("Password generation is SUCCESSFUL!")
+                            print("Account setup complete")
+                        
+                        save_creds(new_creds(username,password))
+                        print("new credentials have been saved")
+
+                        # save_credential
+                    elif nav_code == "out":
+                        print("Thank you for using password locker login again soon, Goodbye!")
+                        print("\n")
                     else:
-                        print("You do not have any saved details")
-
-                elif nav_code == 'add':
-                    print("Great, add a new account below")
-                    print("Enter your username")
-                    username = input()
-                    print("Create Password")
-                    print("If you desire to type in your own password user the short code 'mine' and code 'g' for use to generate one for you")
-                    new_password = input()
-
-                    if new_password == 'mine':
-                        print('\n')
-                        print('Kindly enter your prefered password: (Your password is safe with us)')
-                        password = input()
-                        print('\n')
-                        print('Password stored successfully')
-                        print("Account setup complete")
-
-                    elif new_password == 'g':
-                        print('\n')
-                        password = random.randint(10000,98765)
-                        print('\n')
-                        print(f"{password}")
-                        print("Password generation is SUCCESSFUL!")
-                        print("Account setup complete")
-
-                    # save_credential
-                elif nav_code == "out":
-                    print("Thank you for using password locker login again soon, Goodbye!")
-                    print("\n")
-                else:
-                    print("Please use the codes available")
+                        print("Please use the codes available")
+            else:
+                print("*"*50)
+                print("Wrong username or password, please try again")
+                print("*"*50)
 
 
 
