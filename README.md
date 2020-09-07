@@ -3,7 +3,7 @@
 #### By Ricky Mwethera
 
 ## Description
-This is an application that allows a user to create an account and store their passwords, view the passwords and delete the passwords as well
+This is an application that allows a user to create an account and store their passwords, view the passwords and delete the passwords as well. You have to create an account as a new user to be able to login and add details.
 ## Setup/Installation Requirements
 * clone the repo using git clone
 * open it using vscode
@@ -11,9 +11,7 @@ This is an application that allows a user to create an account and store their p
 * navigate to the folder
 * run (python3.8 run.py) to run the program
 ## Known Bugs
-* Does not display accounts
-* verification
-* save function
+* Deleting feature
 
 ## Technologies Used
 * ubuntu linux as the host OS
