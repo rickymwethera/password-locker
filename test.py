@@ -61,7 +61,7 @@ class TestCredentials(unittest.TestCase):
         test_save_credentials test case to test if the credentials object is saved into
          the user list
         '''
-        self.new_profile.save_credential() # saving the new credentials
+        self.new_profile.save_creds() # saving the new credentials
         self.assertEqual(len(Credentials.new_credentials),0)
 
 
@@ -69,12 +69,12 @@ class TestCredentials(unittest.TestCase):
             '''
             test_delete_contact to test if we can remove a contact from our contact list
             '''
-            self.new_profile.save_credential()
+            self.new_profile.save_creds()
             test_credential = Credentials("ricky","123123") # new contact
-            test_credential.save_credential()
+            test_credential.save_creds()
 
-            self.new_profile.del_account()# Deleting a contact 
-            self.assertEqual(len(Credentials.new_credentials),1)
+            self.new_profile.delete_account()# Deleting a contact 
+            self.assertEqual(len(Credentials.new_user_list),1)
 
 if __name__ == '__main__':
     unittest.main()
