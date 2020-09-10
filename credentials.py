@@ -19,11 +19,11 @@ class Credentials:
         """
         return Credentials.new_user_list
 
-    def del_account(credential):
+    def delete_account(credential):
         Credentials.new_user_list.remove(credential)
         return credential
     
-    def find_account(username):
+    def find_account(username): # this is for verification of the user
         for credential in Credentials.new_user_list:
             if credential.username == username:
                 
